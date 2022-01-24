@@ -2,31 +2,64 @@ import { ShopCard } from "./Card"
 
 class Cart {
     constructor(parentElement) {
+        this.parentElement = parentElement
+        this.products = []
+        this.totalPrice = 0
+        this.totalAmount = 0
 
+        this.#checkLocalStorage()
     }
 
-    listProductOnCart() {
+    listProductOnScreen() {
+        this.parentElement.innerHTML = ''
+        
+        this.products.forEach(product => {
+            const newCard = new ShopCard(product)
 
+            this.parentElement.appendChild(newCard)
+        })
     }
 
     #checkLocalStorage() {
+        const data = JSON.parse(localStorage.getItem('cart'))
 
+        if (data) {
+            this.products = data
+
+            this.updateProductsStates()
+
+            this.listProductOnScreen()
+
+        } else {
+            this.products = []
+        }
     }
 
     #updateLocalStorage() {
+        const productsStringfied = JSON.stringify(this.products)
 
+        localStorage.setItem('products', productsStringfied)
     }
 
-    updateTotalAmount() {
+    addProduct(products) {
+        this.products.push(products)
 
+        this.updateProductsStates()
+        this.listProductOnScreen()
     }
 
-    updateTotalPrice() {
+    removeProduct(productId) {
+        this.products = this.products.filter(({ id }) => id !== productId)
 
+        this.updateProductsStates()
+        this.listProductOnScreen()
     }
 
-    updateProducts() {
+    updateProductsStates() {
+        this.totalPrice = this.products.reduce((acc, { price }) => acc + price, 0)
+        this.totalAmount = this.products.length
 
+        this.#updateLocalStorage()
     }
 }
 
