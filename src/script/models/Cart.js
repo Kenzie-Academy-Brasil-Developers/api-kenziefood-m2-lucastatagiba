@@ -38,7 +38,7 @@ class Cart {
     #updateLocalStorage() {
         const productsStringfied = JSON.stringify(this.products)
 
-        localStorage.setItem('products', productsStringfied)
+        localStorage.setItem('cart', productsStringfied)
     }
 
     addProduct(products) {
