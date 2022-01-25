@@ -72,15 +72,19 @@ async function updateProduct() {
 
 
 async function deleteProduct() {
-
   const idProduct = productSelect.value
-  const deletedProduct = await Fetch.delete(`/my/product/${idProduct}`)
-  if (deletedProduct === 204) {
-    alert('O produto selecionado foi excluido com sucesso !')
-    populateProducts()
-  } else {
-    alert('Verifique os campos e tente novamente !')
+  if (idProduct) {
+    const deletedProduct = await Fetch.delete(`/my/product/${idProduct}`)
+    if (deletedProduct === 204) {
+      alert('O produto selecionado foi excluido com sucesso !')
+      populateProducts()
+    } else {
+      alert('Verifique os campos e tente novamente !')
+    }
+  }else{
+    alert('Selecione um produto a ser deletado.')
   }
+
 }
 
 populateProducts()
