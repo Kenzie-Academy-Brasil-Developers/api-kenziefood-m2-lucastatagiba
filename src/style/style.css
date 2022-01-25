@@ -119,6 +119,10 @@ header #buttonSearchName img {
   border-color: var(--grey-4);
 }
 
+.panel__buttonCategory:hover {
+  border-color: var(--grey-4);
+}
+
 .cart__header {
   display: flex;
   align-items: center;
@@ -141,14 +145,19 @@ header #buttonSearchName img {
   gap: 43px;
   height: 405px;
   padding: 17px 10px;
-  background-color: var(--grey-1);
+  background-color: white;
   overflow-y: auto;
+}
+
+.cart__productsArea--empty .cart__products{
+  display: none;
 }
 
 .cartItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .cartItem__image {
@@ -156,6 +165,47 @@ header #buttonSearchName img {
   height: 70px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.cartItem__infoProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100px;
+  flex-grow: 1;
+  margin-right: 5px;
+}
+
+.cartItem__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.cartItem__category {
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--grey-3);
+}
+
+.cartItem__price{
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--grey-4);
+  margin-top: 4px;
+}
+
+.cartItem__deleteButton{
+  border: none;
+  border-radius: 4px;
+  background-color: var(--grey-1);
+  width: 25px;
+  height: 25px;
+  cursor: pointer ;
 }
 
 @media screen and (min-width: 530px) {
