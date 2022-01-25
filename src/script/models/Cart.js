@@ -24,7 +24,7 @@ class Cart {
         const data = JSON.parse(localStorage.getItem('cart'))
 
         if (data) {
-            this.products = data
+            this.products = data.map((product, i) => ({...product, id: i}))
 
             this.updateProductsStates()
 
@@ -42,6 +42,7 @@ class Cart {
     }
 
     addProduct(product) {
+        product.id = this.products.length
         this.products.push(product)
 
         this.updateProductsStates()
@@ -49,7 +50,7 @@ class Cart {
     }
 
     removeProduct(productId) {
-        this.products = this.products.filter(({ id }) => id !== productId)
+        this.products = this.products.filter(({id}) => id !== productId)
 
         this.updateProductsStates()
         this.listProductOnScreen()
