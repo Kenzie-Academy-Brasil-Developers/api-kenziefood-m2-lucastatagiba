@@ -9,17 +9,15 @@ const descriptionProduct = document.querySelector('#productDescription')
 const URLImageProduct = document.querySelector('#productImageURL')
 const priceProduct = document.querySelector('#productPrice')
 
-async function populateDatalistProducts() {
+async function populateProducts() {
   const data = await Fetch.get('/my/product')
-
-  console.log(data)
 
   data.forEach((product) => {
     const option = document.createElement('option')
-    option.value = product.nome
+    option.value = product.id
     option.innerText = product.nome
 
-    datalistProducts.appendChild(option)
+    productSelect.appendChild(option)
   })
 }
 
