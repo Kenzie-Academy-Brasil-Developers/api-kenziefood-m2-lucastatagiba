@@ -7,18 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="O jeito mais fácil de pedir delivery de comida e fazer mercado. Leia avaliações de restaurantes, faça seu pedido pela internet e receba em casa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./src/style/reset.css">
+    <link rel="stylesheet" href="./src/style/style.css">
     <title> Kenzie Food </title>
 </head>
 
 <body>
     <header>
-        <div class="container">
+        <div class="header__container container">
             <figure class="header__logoFigure">
                 <img src="./src/images/logo.svg" alt="logo">
                 <figcaption>Kenzie Food</figcaption>
             </figure>
             <div class="header__inputArea">
-                <input class="inputSearchName" type="text" placeholder="Pesquisar por produto">
+                <input id="inputSearchName" type="text" placeholder="Pesquisar por produto">
                 <button id="buttonSearchName">
                     <img src="./src/images/icons/search.svg" alt="search icon">
                 </button>
@@ -36,17 +42,17 @@
                         <span>Todos</span>
                     </button>
 
-                    <button class="panel__buttonCategory">
+                    <button class="panel__buttonCategory panel__buttonCategory--pao">
                         <img src="./src/images/icons/Panificadora.svg" alt="icon">
                         <span>Panificadora</span>
                     </button>
 
-                    <button class="panel__buttonCategory">
+                    <button class="panel__buttonCategory panel__buttonCategory--fruta">
                         <img src="./src/images/icons/Frutas.svg" alt="icon">
                         <span>Frutas</span>
                     </button>
 
-                    <button class="panel__buttonCategory">
+                    <button class="panel__buttonCategory panel__buttonCategory--bebida">
                         <img src="./src/images/icons/Bebidas.svg" alt="icon">
                         <span>Bebidas</span>
                     </button>
@@ -61,7 +67,7 @@
                 <section class="cart">
                     <div class="cart__header">
                         <img src="./src/images/icons/cart.svg" alt="cart icon">
-                        <h2>Carinho</h2>
+                        <h2>Carrinho</h2>
                     </div>
 
                     <div class="cart__products">
@@ -74,7 +80,7 @@
                             <span class="totalAmount__title">Quantidade</span>
                             <span class="totalAmount__value"></span>
                         </div>
- 
+
                         <div class="cart__totalPrice">
                             <span class="totalPrice__title">Total</span>
                             <span class="totalPrice__value"></span>

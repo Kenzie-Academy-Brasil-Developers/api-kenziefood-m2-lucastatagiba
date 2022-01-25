@@ -1,0 +1,184 @@
+:root {
+  --color-primary: #FF2253;
+  --color-primary-50: #FFE9EE;
+  --color-secondary: #4ACA94;
+  --color-secondary-50: #E4F7EF;
+
+  --product-1: #EEF6FF;
+  --product-2: #FFF7F4;
+  --product-3: #FFE4EA;
+  --product-4: #F3EEF5;
+
+  --grey-4: #212529;
+  --grey-3: #868E96;
+  --grey-2: #E9ECEF;
+  --grey-1: #F8F9FA;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+header {
+  padding: 23px 0 16px;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+header .header__inputArea {
+  display: flex;
+  align-items: center;
+  background-color: var(--grey-1);
+  border: 1.5px solid var(--grey-1);
+  box-sizing: border-box;
+  border-radius: 33.0868px;
+  padding: 5px 5px 5px 16px;
+}
+
+header .header__inputArea:focus-within {
+  border-color: var(--grey-4);
+}
+
+header #inputSearchName {
+  background-color: transparent;
+  border: none;
+  flex: 1 1 auto;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  line-height: 16px;
+  color: var(--grey-3);
+}
+
+header #buttonSearchName {
+  flex-shrink: 0;
+  background-color: var(--color-primary-50);
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+header #buttonSearchName img {
+  vertical-align: -2px;
+}
+
+
+.panel__buttonsFilter {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.panel__buttonCategory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 11.5px 15px;
+  background-color: var(--grey-1);
+  border-radius: 30px;
+  border: 1.5px solid var(--grey-1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--grey-4);
+  cursor: pointer;
+}
+
+.panel__buttonCategory--pao {
+  background-color: var(--product-2);
+  border-color: var(--product-2);
+}
+
+.panel__buttonCategory--fruta {
+  background-color: var(--product-3);
+  border-color: var(--product-3);
+}
+
+.panel__buttonCategory--bebida {
+  background-color: var(--product-4);
+  border-color: var(--product-4);
+}
+
+.panel__buttonCategory--active {
+  border-color: var(--grey-4);
+}
+
+.cart__header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 25px 12px;
+  background-color: var(--color-primary);
+  border-radius: 15px 15px 0 0;
+}
+
+.cart__header h2 {
+  font-weight: bold;
+  font-size: 17.1px;
+  line-height: 28px;
+  color: white;
+}
+
+.cart__products {
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+  height: 405px;
+  padding: 17px 10px;
+  background-color: var(--grey-1);
+  overflow-y: auto;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartItem__image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 530px) {
+  header {
+    box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25);
+    margin-bottom: 42px;
+  }
+
+  .header__container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .header__inputArea {
+    width: 311px;
+  }
+
+  .panel__buttonsFilter {
+    gap: 28px;
+  }
+
+  .cart {
+    width: 320px;
+  }
+}
