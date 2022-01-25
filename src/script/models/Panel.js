@@ -1,19 +1,29 @@
 import { Card } from "./Card"
+
 class Panel {
     constructor(parentElement, productList) {
-
-    }
-    listProduct(product) {
-
+        this.parentElement = parentElement
+        this.productList = productList
     }
 
-    filterByCategory() {
-
+    listProduct(products = this.productList) {   
+        this.parentElement.innerHTML = ''     
+        products.forEach(product => {
+            const card = new Card(product).createElement()            
+            this.parentElement.appendChild(card)
+        });
     }
 
-    filterByName() {
-
+    filterByCategory(categoria) {
+        const productsFilter = this.productList.filter((product) => product.categoria === categoria)
+        this.listProduct(productsFilter)
     }
 
+    filterByName(inputValue) {
+        const productsFilter = this.productList.filter((product) => product.nome === inputValue)
+        this.listProduct(productsFilter)
+    }
 }
+
+export {Panel}
 
