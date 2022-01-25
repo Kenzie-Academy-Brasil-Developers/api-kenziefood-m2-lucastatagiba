@@ -149,7 +149,7 @@ header #buttonSearchName img {
   overflow-y: auto;
 }
 
-.cart__productsArea--empty .cart__products{
+.cart__productsArea--empty .cart__products {
   display: none;
 }
 
@@ -192,21 +192,45 @@ header #buttonSearchName img {
   color: var(--grey-3);
 }
 
-.cartItem__price{
+.cartItem__price {
   font-size: 12px;
   line-height: 16px;
   color: var(--grey-4);
   margin-top: 4px;
 }
 
-.cartItem__deleteButton{
+.cartItem__deleteButton {
   border: none;
   border-radius: 4px;
   background-color: var(--grey-1);
   width: 25px;
   height: 25px;
-  cursor: pointer ;
+  cursor: pointer;
 }
+
+.cart__productsArea--empty .cart__info {
+  display: none;
+}
+
+.cart__totalAmount {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 18px;
+  background-color: var(--grey-1);
+}
+
+.totalAmount__title, .totalAmount__value, .totalPrice__title, .totalPrice__value{
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.cart__totalPrice {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 18px;
+}
+
 
 @media screen and (min-width: 530px) {
   header {
