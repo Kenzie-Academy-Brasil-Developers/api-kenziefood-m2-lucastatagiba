@@ -15,7 +15,6 @@ class Card {
 
     // cria cada card
     createElement() {
-        const showCase = document.querySelector('#panel__showCase')
         const articleCard = document.createElement('article')
         articleCard.classList.add = 'articleCard'
 
@@ -43,14 +42,22 @@ class Card {
 
         const iconAddCart = document.createElement('img')
         iconAddCart.classList.add = 'iconAddCart'
+        iconAddCart.addEventListener('click', this)
 
-        showCase.appendChild(articleCard)
-        articleCard.append(imgCard, category, name, description, price, iconAddCart)        
+       
+        articleCard.append(imgCard, category, name, description, price, iconAddCart)   
+        return articleCard
     }
 
     // evento para chamar outros eventos
-    handleEvent() {
-
+    handleEvent(event) {
+        switch (event){
+            case 'click':
+                this.handleClick(event)
+                break;
+            default:
+                break;
+        }
     }
 
     handleClick() {
