@@ -1,4 +1,4 @@
-import { Card } from "./Card"
+import { Card } from "./Card.js"
 
 class Panel {
     constructor(parentElement, productList) {
@@ -15,12 +15,14 @@ class Panel {
     }
 
     filterByCategory(categoria) {
-        const productsFilter = this.productList.filter((product) => product.categoria === categoria)
+        const validCategoria = categoria.toLowerCase().trim()
+        const productsFilter = this.productList.filter(({categoria}) => categoria.toLowerCase() === validCategoria)
         this.listProduct(productsFilter)
     }
 
     filterByName(inputValue) {
-        const productsFilter = this.productList.filter((product) => product.nome === inputValue)
+        const validName = inputValue.toLowerCase().trim()
+        const productsFilter = this.productList.filter(({nome}) => nome.includes(validName))
         this.listProduct(productsFilter)
     }
 }
