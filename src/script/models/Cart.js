@@ -1,4 +1,4 @@
-import { ShopCard } from "./Card"
+import { ShopCard } from "./Card.js"
 
 class Cart {
     constructor(parentElement) {
