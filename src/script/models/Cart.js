@@ -19,6 +19,12 @@ class Cart {
 
             this.parentElement.appendChild(newCard)
         })
+
+        if(this.products.length > 0){
+            this.parentElement.parentElement.classList.remove('cart__productsArea--empty')
+        } else {
+            this.parentElement.parentElement.classList.add('cart__productsArea--empty')
+        }
     }
 
     #checkLocalStorage() {
