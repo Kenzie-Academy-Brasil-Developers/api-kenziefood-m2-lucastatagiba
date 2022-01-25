@@ -74,6 +74,10 @@ header #buttonSearchName img {
   vertical-align: -2px;
 }
 
+.panel__container{
+  display: flex;
+  flex-direction: column;
+}
 
 .panel__buttonsFilter {
   display: flex;
@@ -180,5 +184,11 @@ header #buttonSearchName img {
 
   .cart {
     width: 320px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .panel__container{
+    flex-direction: row;
   }
 }
