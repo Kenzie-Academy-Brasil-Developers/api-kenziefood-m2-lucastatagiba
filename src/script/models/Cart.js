@@ -35,14 +35,14 @@ class Cart {
         }
     }
 
-    #updateLocalStorage() {
+    #updateLocalStorage() {        
         const productsStringfied = JSON.stringify(this.products)
 
         localStorage.setItem('cart', productsStringfied)
     }
 
-    addProduct(products) {
-        this.products.push(products)
+    addProduct(product) {
+        this.products.push(product)
 
         this.updateProductsStates()
         this.listProductOnScreen()

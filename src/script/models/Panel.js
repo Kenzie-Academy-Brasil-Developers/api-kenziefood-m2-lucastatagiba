@@ -1,15 +1,16 @@
 import { Card } from "./Card.js"
 
 class Panel {
-    constructor(parentElement, productList) {
+    constructor(parentElement, productList, cart) {
         this.parentElement = parentElement
         this.productList = productList
+        this.cart = cart
     }
 
     listProduct(products = this.productList) {   
         this.parentElement.innerHTML = ''     
         products.forEach(product => {
-            const card = new Card(product).createElement()            
+            const card = new Card(product, this.cart).createElement()            
             this.parentElement.appendChild(card)
         });
     }
