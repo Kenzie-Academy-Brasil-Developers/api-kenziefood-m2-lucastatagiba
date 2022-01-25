@@ -51,7 +51,7 @@ class Card {
 
     // evento para chamar outros eventos
     handleEvent(event) {
-        switch (event){
+        switch (event.type) {
             case 'click':
                 this.handleClick(event)
                 break;
@@ -67,8 +67,9 @@ class Card {
 }
 
 class ShopCard extends Card {
-    constructor(product) {
+    constructor(product, cart) {
         super(product)
+        this.cart = cart
     }
 
     createElement() {
@@ -84,15 +85,16 @@ class ShopCard extends Card {
         infoProduct.classList.add('cartItem__infoProduct')
 
         const title = document.createElement('h3')
-        title.classList.add()
+        title.innerText = this.name 
+        title.classList.add('cartItem__title')
 
         const category = document.createElement('span')
+        category.innerText = this.category
         category.classList.add('cartItem__category')
-        category.classList.add()
 
         const price = document.createElement('span')
         price.classList.add('cartItem__price')
-        price.classList.add()
+        price.innerText = `R$ ${this.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
         infoProduct.append(title, category, price)
 
@@ -101,7 +103,7 @@ class ShopCard extends Card {
         removeButton.addEventListener('click', this)
 
         const deleteIcon = document.createElement('img')
-        deleteIcon.src = ''
+        deleteIcon.src = './src/images/icons/trash.svg'
         deleteIcon.alt = 'delete'
 
         removeButton.appendChild(deleteIcon)
@@ -112,7 +114,7 @@ class ShopCard extends Card {
     }
 
     handleClick() {
-
+        this.cart.removeProduct(this.id)
     }
 }
 

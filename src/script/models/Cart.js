@@ -14,7 +14,7 @@ class Cart {
         this.parentElement.innerHTML = ''
         
         this.products.forEach(product => {
-            const newCard = new ShopCard(product)
+            const newCard = new ShopCard(product, this).createElement()
 
             this.parentElement.appendChild(newCard)
         })
