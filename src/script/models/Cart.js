@@ -1,11 +1,13 @@
 import { ShopCard } from "./Card.js"
 
 class Cart {
-    constructor(parentElement) {
+    constructor(parentElement, amountDisplay, totalPriceDisplay) {
         this.parentElement = parentElement
         this.products = []
         this.totalPrice = 0
         this.totalAmount = 0
+        this.totalamountDisplay = amountDisplay
+        this.totalPriceDisplay = totalPriceDisplay
 
         this.#checkLocalStorage()
     }
@@ -63,8 +65,10 @@ class Cart {
     }
 
     updateProductsStates() {
-        this.totalPrice = this.products.reduce((acc, { price }) => acc + price, 0)
+        this.totalPrice = this.products.reduce((acc, { preco }) => acc + Number(preco), 0)
         this.totalAmount = this.products.length
+        this.totalamountDisplay.innerText = this.totalAmount
+        this.totalPriceDisplay.innerText = `R$ ${this.totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
         this.#updateLocalStorage()
     }

@@ -1,33 +1,58 @@
-import { Card } from "./models/Card.js";
 import { Panel } from "./models/Panel.js";
 import { Fetch } from "./models/Fetch.js"
 import { Cart } from "./models/Cart.js";
 
 const panel__showCase = document.querySelector('#panel__showCase')
 const cartProducts = document.querySelector('.cart__products')
-const button = document.querySelector('button')
+const buttonsFilter = document.querySelector('.panel__buttonsFilter')
+const input = document.querySelector('#inputSearchName')
+const totalAmount = document.querySelector('.totalAmount__value')
+const totalPrice = document.querySelector('.totalPrice__value')
+console.log(buttonsFilter)
 
 
+const filterByName = (listProduct) => {
+    listProduct.filterByName(input.value)
+}
+const addEventFilterByName = (listProduct) => {
+input.addEventListener('keyup', () => filterByName(listProduct))
+}
 
-const startPanel = async () =>{
+const removeAticveClass = () => {
+    const classActive = document.querySelector('.panel__buttonCategory--active')
+    if(classActive){
+        classActive.classList.remove('panel__buttonCategory--active')
+    }    
+}
+
+
+const filterByCategory = (event, listProduct) => {
+    const element = event.target
+    if(element.tagName === 'BUTTON'){ 
+        const buttonContent = element.querySelector('span').innerText
+        removeAticveClass()
+        element.classList.add('panel__buttonCategory--active')
+        const category = buttonContent === 'Todos' ? '' : buttonContent
+        listProduct.filterByCategory(category)
+    }   
+}
+const addEventFilterByCategory = (listProduct) => {
+    buttonsFilter.addEventListener('click', (event) => filterByCategory(event, listProduct))
+}
+
+const startPanel = async () => {
     const data = await Fetch.get('/product')
-    const listProductCart = new Cart(cartProducts)
-    const listProduct =  new Panel(panel__showCase, data, listProductCart)
+    const listProductCart = new Cart(cartProducts, totalAmount, totalPrice)
+    const listProduct = new Panel(panel__showCase, data, listProductCart)
     listProduct.listProduct()
-    button.addEventListener('click', ()=>{
-        listProduct.filterByName()
-    })
-}
-
-const startCart = async () => {
-    const listProduct = new Cart(cartProducts)
     
+    addEventFilterByCategory(listProduct)
+    addEventFilterByName(listProduct)
+  
 }
 
-
-startCart()
 startPanel()
 
 
- 
+
 
