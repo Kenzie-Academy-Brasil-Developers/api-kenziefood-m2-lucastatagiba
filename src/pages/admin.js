@@ -1,7 +1,7 @@
 import { Fetch } from "../script/models/Fetch.js";
 
 const formProduct = document.querySelector('form')
-const datalistProducts = document.querySelector('#listProducts')
+const productSelect = document.querySelector('#productsAvailable')
 
 const nameProduct = document.querySelector('#productName')
 const categoryProduct = document.querySelector('#productCategory')
@@ -71,10 +71,12 @@ async function updateProduct() {
   Fetch.patch(`/my/product/${id}`, toUpdate)
 }
 
+
+
 async function deleteProduct() {
   Fetch.delete(`/my/product/${id}`)
 }
 
 populateDatalistProducts()
- createNewProduct()
+//  createNewProduct()
 
