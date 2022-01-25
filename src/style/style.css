@@ -46,7 +46,7 @@ header .header__inputArea {
 }
 
 header .header__inputArea:focus-within {
-  border: 1.5px solid var(--grey-4);
+  border-color: var(--grey-4);
 }
 
 header #inputSearchName {
@@ -54,7 +54,7 @@ header #inputSearchName {
   border: none;
   flex: 1 1 auto;
   outline: none;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 13.5px;
   line-height: 16px;
   color: var(--grey-3);
@@ -67,6 +67,7 @@ header #buttonSearchName {
   border: none;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 header #buttonSearchName img {
@@ -74,9 +75,54 @@ header #buttonSearchName img {
 }
 
 
+.panel__buttonsFilter {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.panel__buttonCategory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 11.5px 15px;
+  background-color: var(--grey-1);
+  border-radius: 30px;
+  border: 1.5px solid var(--grey-1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--grey-4);
+  cursor: pointer;
+}
+
+.panel__buttonCategory--pao {
+  background-color: var(--product-2);
+  border-color: var(--product-2);
+}
+
+.panel__buttonCategory--fruta {
+  background-color: var(--product-3);
+  border-color: var(--product-3);
+}
+
+.panel__buttonCategory--bebida {
+  background-color: var(--product-4);
+  border-color: var(--product-4);
+}
+
+.panel__buttonCategory--active {
+  border-color: var(--grey-4);
+}
+
 @media screen and (min-width: 530px) {
-  header{
+  header {
     box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25);
+    margin-bottom: 42px;
   }
 
   .header__container {
@@ -87,6 +133,10 @@ header #buttonSearchName img {
 
   header .header__inputArea {
     max-width: 311px;
+  }
+
+  .panel__buttonsFilter {
+    gap: 28px;
   }
 }
 
