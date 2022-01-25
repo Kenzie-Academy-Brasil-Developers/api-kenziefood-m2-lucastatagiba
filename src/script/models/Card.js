@@ -15,7 +15,6 @@ class Card {
 
     // cria cada card
     createElement() {
-        const showCase = document.querySelector('#panel__showCase')
         const articleCard = document.createElement('article')
         articleCard.classList.add = 'articleCard'
 
@@ -43,14 +42,22 @@ class Card {
 
         const iconAddCart = document.createElement('img')
         iconAddCart.classList.add = 'iconAddCart'
+        iconAddCart.addEventListener('click', this)
 
-        showCase.appendChild(articleCard)
-        articleCard.append(imgCard, category, name, description, price, iconAddCart)        
+       
+        articleCard.append(imgCard, category, name, description, price, iconAddCart)   
+        return articleCard
     }
 
     // evento para chamar outros eventos
-    handleEvent() {
-
+    handleEvent(event) {
+        switch (event){
+            case 'click':
+                this.handleClick(event)
+                break;
+            default:
+                break;
+        }
     }
 
     handleClick() {
@@ -60,6 +67,49 @@ class Card {
 }
 
 class ShopCard extends Card {
+    constructor(product) {
+        super(product)
+    }
+
+    createElement() {
+        const card = document.createElement('article')
+        card.classList.add('cartItem')
+
+        const image = document.createElement('img')
+        image.classList.add('cartItem__image')
+        image.src = this.img
+        image.alt = this.name
+
+        const infoProduct = document.createElement('div')
+        infoProduct.classList.add('cartItem__infoProduct')
+
+        const title = document.createElement('h3')
+        title.classList.add()
+
+        const category = document.createElement('span')
+        category.classList.add('cartItem__category')
+        category.classList.add()
+
+        const price = document.createElement('span')
+        price.classList.add('cartItem__price')
+        price.classList.add()
+
+        infoProduct.append(title, category, price)
+
+        const removeButton = document.createElement('button')
+        removeButton.classList.add('cartItem__deleteButton')
+        removeButton.addEventListener('click', this)
+
+        const deleteIcon = document.createElement('img')
+        deleteIcon.src = ''
+        deleteIcon.alt = 'delete'
+
+        removeButton.appendChild(deleteIcon)
+
+        card.append(image, infoProduct, removeButton)
+
+        return card
+    }
 
     handleClick() {
 
