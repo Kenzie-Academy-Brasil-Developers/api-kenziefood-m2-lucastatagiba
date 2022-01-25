@@ -1,11 +1,12 @@
 class Card {
-    constructor({ id, imagem, categoria, nome, descricao, preco }) {
+    constructor({ id, imagem, categoria, nome, descricao, preco }, cart) {
         this.id = id
-        this.img = imagem
-        this.category = categoria
-        this.name = nome
-        this.description = descricao
-        this.price = preco
+        this.imagem = imagem
+        this.categoria = categoria
+        this.nome = nome
+        this.descricao = descricao
+        this.preco = preco
+        this.cart = cart
     }
 
 
@@ -20,28 +21,29 @@ class Card {
 
         const imgCard = document.createElement('img')
         imgCard.classList.add = 'productImg'
-        imgCard.src = this.img
+        imgCard.src = this.imagem
 
         const category = document.createElement('span')
         category.classList.add = 'category'
-        category.classList.add = this.category
-        category.innerText = this.category
+        category.classList.add = this.categoria
+        category.innerText = this.categoria
 
         const name = document.createElement('span')
         name.classList.add = 'name'
-        name.innerText = this.name
+        name.innerText = this.nome
 
 
         const description = document.createElement('p')
         description.classList.add = 'description'
-        description.innerText = this.description
+        description.innerText = this.descricao
 
         const price = document.createElement('span')
         price.classList.add = 'price'
-        price.innerText = this.price
+        price.innerText = this.preco
 
         const iconAddCart = document.createElement('img')
         iconAddCart.classList.add = 'iconAddCart'
+        iconAddCart.src = './src/images/icons/addToCart.svg'
         iconAddCart.addEventListener('click', this)
 
        
@@ -61,7 +63,8 @@ class Card {
     }
 
     handleClick() {
-
+        const {cart, ...rest} = this
+        this.cart.addProduct(rest)
     }
 
 }
@@ -78,23 +81,24 @@ class ShopCard extends Card {
 
         const image = document.createElement('img')
         image.classList.add('cartItem__image')
-        image.src = this.img
-        image.alt = this.name
+        image.src = this.imagem
+        image.alt = this.nome
 
         const infoProduct = document.createElement('div')
         infoProduct.classList.add('cartItem__infoProduct')
 
         const title = document.createElement('h3')
-        title.innerText = this.name 
+        title.innerText = this.nome 
         title.classList.add('cartItem__title')
 
         const category = document.createElement('span')
-        category.innerText = this.category
+        category.innerText = this.categoria
         category.classList.add('cartItem__category')
 
         const price = document.createElement('span')
         price.classList.add('cartItem__price')
-        price.innerText = `R$ ${this.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+        
+        price.innerText = `R$ ${this.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
         infoProduct.append(title, category, price)
 

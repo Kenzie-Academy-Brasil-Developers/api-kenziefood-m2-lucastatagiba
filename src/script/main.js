@@ -7,9 +7,12 @@ const panel__showCase = document.querySelector('#panel__showCase')
 const cartProducts = document.querySelector('.cart__products')
 const button = document.querySelector('button')
 
+
+
 const startPanel = async () =>{
     const data = await Fetch.get('/product')
-    const listProduct =  new Panel(panel__showCase, data)
+    const listProductCart = new Cart(cartProducts)
+    const listProduct =  new Panel(panel__showCase, data, listProductCart)
     listProduct.listProduct()
     button.addEventListener('click', ()=>{
         listProduct.filterByName()
