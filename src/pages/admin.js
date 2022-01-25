@@ -11,10 +11,13 @@ const priceProduct = document.querySelector('#productPrice')
 
 async function populateDatalistProducts() {
   const data = await Fetch.get('/my/product')
-  
+
+  console.log(data)
+
   data.forEach((product) => {
     const option = document.createElement('option')
-    option.value = product.name
+    option.value = product.nome
+    option.innerText = product.nome
 
     datalistProducts.appendChild(option)
   })
@@ -22,11 +25,11 @@ async function populateDatalistProducts() {
 
 formProduct.addEventListener('submit', submitForm)
 
-function submitForm(event){
+function submitForm(event) {
   event.preventDefault()
-  buttonName = event.submitter.innerText
-  
-  switch(buttonName){
+  const buttonName = event.submitter.innerText
+
+  switch (buttonName) {
     case 'Novo produto':
       createNewProduct()
       break
@@ -40,32 +43,38 @@ function submitForm(event){
   }
 }
 
-async function createNewProduct(){
+async function createNewProduct() {
+
   const newProduct = {
-    // nameProduct
-    // categoryProduct
-    // descriptionProduct
-    // URLImageProduct
-    // priceProduct
+    nome: 'nameProduct',
+    preco: 123,
+    categoria: 'categoryProduct',
+    imagem: 'afaddfafafafafafda',
+    descricao: 'descriptionProduct'
   }
-  Fetch.post('/my/product', newProduct)
+
+  const data = await Fetch.post('/my/product', newProduct)
+  console.log(data)
 }
 
-async function updateProduct(){
+async function updateProduct() {
+  console.log(document.querySelector('#products'))
+
   const toUpdate = {
-  // nameProduct
-  // categoryProduct
-  // descriptionProduct
-  // URLImageProduct
-  // priceProduct
+    nome: nameProduct,
+    preco: priceProduct,
+    categoria: categoryProduct,
+    imagem: URLImageProduct,
+    descricao: descriptionProduct
   }
+
   Fetch.patch(`/my/product/${id}`, toUpdate)
 }
 
-async function deleteProduct(){
+async function deleteProduct() {
   Fetch.delete(`/my/product/${id}`)
 }
 
 populateDatalistProducts()
-
+ createNewProduct()
 
