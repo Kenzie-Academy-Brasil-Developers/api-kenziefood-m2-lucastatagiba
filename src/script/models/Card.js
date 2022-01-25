@@ -17,37 +17,41 @@ class Card {
     // cria cada card
     createElement() {
         const articleCard = document.createElement('article')
-        articleCard.classList.add = 'articleCard'
+        articleCard.classList.add('articleCard')
 
         const imgCard = document.createElement('img')
-        imgCard.classList.add = 'productImg'
+        imgCard.classList.add('productImg')
         imgCard.src = this.imagem
 
         const category = document.createElement('span')
-        category.classList.add = 'category'
-        category.classList.add = this.categoria
+        category.classList.add('category')
+        category.classList.add(this.categoria)
         category.innerText = this.categoria
 
         const name = document.createElement('span')
-        name.classList.add = 'name'
+        name.classList.add('name')
         name.innerText = this.nome
 
 
         const description = document.createElement('p')
-        description.classList.add = 'description'
+        description.classList.add('description')
         description.innerText = this.descricao
 
+        const divPriceIcon = document.createElement('div')
+        divPriceIcon.classList.add('divPriceIcon')
+
         const price = document.createElement('span')
-        price.classList.add = 'price'
+        price.classList.add('price')
         price.innerText = this.preco
+        price.innerText = `R$ ${this.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 
         const iconAddCart = document.createElement('img')
-        iconAddCart.classList.add = 'iconAddCart'
+        iconAddCart.classList.add('iconAddCart')
         iconAddCart.src = './src/images/icons/addToCart.svg'
         iconAddCart.addEventListener('click', this)
 
-       
-        articleCard.append(imgCard, category, name, description, price, iconAddCart)   
+        divPriceIcon.append(price, iconAddCart)
+        articleCard.append(imgCard, category, name, description, divPriceIcon)   
         return articleCard
     }
 
