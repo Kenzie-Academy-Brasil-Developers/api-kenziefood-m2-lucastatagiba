@@ -16,14 +16,19 @@ class Panel {
     }
 
     filterByCategory(categoria) {
-        const validCategoria = categoria.toLowerCase().trim()
-        const productsFilter = this.productList.filter(({categoria}) => categoria.toLowerCase() === validCategoria)
-        this.listProduct(productsFilter)
+        if(categoria){
+            const validCategoria = categoria.toLowerCase().trim()
+            const productsFilter = this.productList.filter(({categoria}) => categoria.toLowerCase() === validCategoria)
+            this.listProduct(productsFilter)
+        } else{
+            this.listProduct()
+        }
+        
     }
 
     filterByName(inputValue) {
         const validName = inputValue.toLowerCase().trim()
-        const productsFilter = this.productList.filter(({nome}) => nome.includes(validName))
+        const productsFilter = this.productList.filter(({nome}) => nome.toLowerCase().includes(validName))
         this.listProduct(productsFilter)
     }
 }

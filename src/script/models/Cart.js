@@ -1,11 +1,12 @@
 import { ShopCard } from "./Card.js"
 
 class Cart {
-    constructor(parentElement) {
+    constructor(parentElement, amountDisplay) {
         this.parentElement = parentElement
         this.products = []
         this.totalPrice = 0
         this.totalAmount = 0
+        this.amountDisplay = amountDisplay
 
         this.#checkLocalStorage()
     }
@@ -59,6 +60,7 @@ class Cart {
     updateProductsStates() {
         this.totalPrice = this.products.reduce((acc, { price }) => acc + price, 0)
         this.totalAmount = this.products.length
+        this.amountDisplay.innerText = this.totalAmount
 
         this.#updateLocalStorage()
     }
