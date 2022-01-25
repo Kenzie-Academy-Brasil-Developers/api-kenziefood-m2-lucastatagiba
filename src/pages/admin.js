@@ -45,6 +45,7 @@ function submitForm(event) {
 async function createNewProduct() {
 
   const newProduct = {
+<<<<<<< HEAD
     nome: 'nameProduct',
     preco: 123,
     categoria: 'categoryProduct',
@@ -54,6 +55,22 @@ async function createNewProduct() {
 
   const data = await Fetch.post('/my/product', newProduct)
 
+=======
+    nome: nameProduct.value,
+    preco: Number(priceProduct.value),
+    categoria: categoryProduct.value,
+    imagem: URLImageProduct.value,
+    descricao: descriptionProduct.value
+  }
+
+  const { error, ...product } = await Fetch.post('/my/product', newProduct)
+  
+  if(error){
+    alert(error)
+  } else {
+    alert(`Produto ${product.nome.toUpperCase()} foi criado com sucesso`)
+  }
+>>>>>>> 6cb0a26379109112b431edbce7c5b349aa19b186
 }
 
 async function updateProduct() {
