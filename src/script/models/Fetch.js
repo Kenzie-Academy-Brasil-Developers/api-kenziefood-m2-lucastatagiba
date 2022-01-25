@@ -10,7 +10,7 @@ class Fetch {
         return data
     }
 
-    static post(endpoint, body) {
+    static async post(endpoint, body) {
         const res = await fetch(Fetch.#url + endpoint, {
             method: 'POST',
             headers: {
@@ -25,7 +25,7 @@ class Fetch {
         return data
     }
 
-    static patch(endpoint, body) {
+    static async patch(endpoint, body) {
         const res = await fetch(Fetch.#url + endpoint, {
             method: 'PATCH',
             headers: {
@@ -40,7 +40,7 @@ class Fetch {
         return data
     }
 
-    static delete(endpoint,) {
+    static async delete(endpoint,) {
         const res = await fetch(Fetch.#url + endpoint, {
             method: 'DELETE',
             headers: {
