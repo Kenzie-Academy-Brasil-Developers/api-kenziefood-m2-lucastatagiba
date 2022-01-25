@@ -13,7 +13,16 @@
 <body>
     <header>
         <div class="container">
-
+            <figure class="header__logoFigure">
+                <img src="./src/images/logo.svg" alt="logo">
+                <figcaption>Kenzie Food</figcaption>
+            </figure>
+            <div class="header__inputArea">
+                <input class="inputSearchName" type="text" placeholder="Pesquisar por produto">
+                <button id="buttonSearchName">
+                    <img src="./src/images/icons/search.svg" alt="search icon">
+                </button>
+            </div>
         </div>
 
     </header>
@@ -23,15 +32,56 @@
 
             <section id="panel">
                 <div class="panel__buttonsFilter">
+                    <button class="panel__buttonCategory panel__buttonCategory--active">
+                        <span>Todos</span>
+                    </button>
 
+                    <button class="panel__buttonCategory">
+                        <img src="./src/images/icons/Panificadora.svg" alt="icon">
+                        <span>Panificadora</span>
+                    </button>
+
+                    <button class="panel__buttonCategory">
+                        <img src="./src/images/icons/Frutas.svg" alt="icon">
+                        <span>Frutas</span>
+                    </button>
+
+                    <button class="panel__buttonCategory">
+                        <img src="./src/images/icons/Bebidas.svg" alt="icon">
+                        <span>Bebidas</span>
+                    </button>
                 </div>
+
                 <div id="panel__showCase">
 
                 </div>
             </section>
 
             <aside>
+                <section class="cart">
+                    <div class="cart__header">
+                        <img src="./src/images/icons/cart.svg" alt="cart icon">
+                        <h2>Carinho</h2>
+                    </div>
 
+                    <div class="cart__products">
+
+                    </div>
+
+                    <div class="cart__info">
+
+                        <div class="cart__totalAmount">
+                            <span class="totalAmount__title">Quantidade</span>
+                            <span class="totalAmount__value"></span>
+                        </div>
+ 
+                        <div class="cart__totalPrice">
+                            <span class="totalPrice__title">Total</span>
+                            <span class="totalPrice__value"></span>
+                        </div>
+                    </div>
+
+                </section>
             </aside>
 
         </div>
