@@ -52,7 +52,7 @@ class Fetch {
             }
         })
 
-        const data = await res.json()
+        const data = res.status
 
         return data
     }

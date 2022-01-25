@@ -11,6 +11,7 @@ const priceProduct = document.querySelector('#productPrice')
 
 async function populateProducts() {
   const data = await Fetch.get('/my/product')
+  productSelect.innerHTML = ''
 
   data.forEach((product) => {
     const option = document.createElement('option')
@@ -34,7 +35,7 @@ function submitForm(event) {
     case 'Atualizar produto':
       updateProduct()
       break
-    case 'Exculir produto':
+    case 'Excluir produto':
       deleteProduct()
       break
     default:
@@ -47,12 +48,12 @@ async function createNewProduct() {
     nome: 'nameProduct',
     preco: 123,
     categoria: 'categoryProduct',
-    imagem: 'afaddfafafafafafda',
+    imagem: 'https://storage.googleapis.com/cpt-partners-content-prod/fc761428-4d17-4edf-bcd7-f9632d2695d6.png',
     descricao: 'descriptionProduct'
   }
 
   const data = await Fetch.post('/my/product', newProduct)
-  console.log(data)
+
 }
 
 async function updateProduct() {
@@ -70,11 +71,18 @@ async function updateProduct() {
 }
 
 
-
 async function deleteProduct() {
-  Fetch.delete(`/my/product/${id}`)
+
+  const idProduct = productSelect.value
+  const deletedProduct = await Fetch.delete(`/my/product/${idProduct}`)
+  if (deletedProduct === 204) {
+    alert('O produto selecionado foi excluido com sucesso !')
+    populateProducts()
+  } else {
+    alert('Verifique os campos e tente novamente !')
+  }
 }
 
-populateDatalistProducts()
-//  createNewProduct()
+populateProducts()
+// createNewProduct()
 
