@@ -153,6 +153,14 @@ header #buttonSearchName img {
   vertical-align: -2px;
 }
 
+header #buttonSearchName:hover img{
+  filter: brightness(0) invert(1);
+}
+
+header #buttonSearchName:hover{
+  background-color: var(--color-primary);
+}
+
 .panel__container {
   display: flex;
   flex-direction: column;
@@ -317,6 +325,23 @@ header #buttonSearchName img {
 }
 
 .iconAddCart {
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-secondary-50);
+  border-radius: 50%;
+  padding: 12px;
+  content: url('../images/icons/addToCart.svg');
+  cursor: pointer;
+}
+
+.iconAddCart:hover {
+  content: url('../images/icons/addToCartWhite.svg');
+  background-color: var(--color-secondary);
+}
+
+.iconAddCart:hover::after{
+  width: 35px;
+  height: 35px;
   width: 35px;
   height: 35px;
   background-color: var(--color-secondary-50);
