@@ -67,6 +67,19 @@ const startPanel = async () => {
     addEventFilterByName(listProduct)
 }
 
+const authenticateUser = () => {
+    const superUser = {
+        username: 'admin',
+        password: 'admin'
+    }
+    const usernameInput = document.querySelector('#modalLoginUsername').value
+    const passwordInput = document.querySelector('#modalLoginPassword').value
+    
+    if(superUser.username === usernameInput && superUser.password === passwordInput){
+        window.location.href = './src/pages/admin.html'
+    }
+}
+
 window.addEventListener('resize', cartPositionAdjust)
 
 cartPositionAdjust()
