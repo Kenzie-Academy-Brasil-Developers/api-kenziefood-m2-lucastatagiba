@@ -53,14 +53,18 @@ const addEventFilterByCategory = (listProduct) => {
 }
 
 const startPanel = async () => {
-    const data = await Fetch.get('/product')
+    const data1 = await Fetch.get('/product')
+    const data2 = await Fetch.get('/my/product')
+    
+    const allProducts = [...data1, ...data2]
+
     const listProductCart = new Cart(cartProducts, totalAmount, totalPrice)
-    const listProduct = new Panel(panel__showCase, data, listProductCart)
+    const listProduct = new Panel(panel__showCase, allProducts, listProductCart)
+
     listProduct.listProduct()
 
     addEventFilterByCategory(listProduct)
     addEventFilterByName(listProduct)
-
 }
 
 window.addEventListener('resize', cartPositionAdjust)
