@@ -1,0 +1,88 @@
+body{
+    width: 100vw;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    font-family: 'Poppins', sans-serif;
+}
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    margin-bottom: 30px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+label{
+    width: 250px;
+    height: 50px;
+    background-color: #FF2253;
+    text-align: center;
+    border-radius: 10px 10px 0 0 ;
+    font-weight: bold;
+    font-size: 17.1px;
+    line-height: 50px;
+    color: rgb(255, 255, 255);
+}
+
+select{
+    width: 250px;
+    height: 35px;
+    color: rgb(0, 0, 0);
+    background-color: #ebebeb;
+    border: 1px dashed #FF2253;
+}
+select:hover{
+    cursor:grabbing;
+}
+option:hover{
+cursor: pointer;
+}
+
+input{
+    width: 250px;
+    padding: 8px 10px;
+    color: #000000;
+    background-color: #eeeded73;
+    border: 1px solid #FF2253;  
+    outline: none; 
+    font-weight: 500;
+}
+
+input:nth-child(5){
+    border-radius: 0px 0px 10px 10px ;
+}
+
+::-webkit-input-placeholder{
+    color: rgb(0, 0, 0);
+}
+button{
+    margin-top: 5px;
+    width: 250px;
+    padding: 8px;
+    color: #ffffff;
+    background-color: #FF2253;
+    border: 1px dashed black;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+}
+button:nth-of-type(1){
+    margin-top: 30px;
+}
+button:hover{
+    cursor: pointer;
+}
