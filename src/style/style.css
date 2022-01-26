@@ -234,6 +234,7 @@ header #buttonSearchName:hover{
 
 .productImg {
   width: 300px;
+  height: 200px;
   border-radius: 8px;
   border: 3px solid var(--color-primary-50);
   box-sizing: border-box;
@@ -259,32 +260,27 @@ header #buttonSearchName:hover{
   height: 30px;
   position: relative;
   top: -20px;
-  margin-left: 20px;
+  margin-left: 15px;
   padding: 6px 18px;
+  width: fit-content;
 }
-
-.Frutas {
-  width: 94.09px;
+.category::before{
+  background-image: url('../images/icons/sacolaCompra.png');
+  background-size: 16px 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  content: "";
 }
-
 .Frutas::before {
-  content: url('../images/icons/Frutas.svg')
+  background-image: url('../images/icons/Frutas.svg');
 }
-
-.Panificadora {
-  width: 132px;
-}
-
 .Panificadora::before {
-  content: url('../images/icons/Panificadora.svg');
+  background-image: url('../images/icons/Panificadora.svg');
 }
-
-.Bebidas {
-  width: 106.9px;
-}
-
 .Bebidas::before {
-  content: url('../images/icons/Bebidas.svg');
+  background-image: url('../images/icons/Bebidas.svg');
 }
 
 .name {
@@ -302,6 +298,7 @@ header #buttonSearchName:hover{
   color: rgba(0, 0, 0, 0.5);
   font-family: 'Poppins';
   font-weight: 400;
+  height: 48px;
   font-size: 12px;
   line-height: 16px;
   margin-bottom: 27px;
@@ -314,7 +311,6 @@ header #buttonSearchName:hover{
 }
 
 .price {
-  width: 53px;
   height: 14px;
   font-family: 'Poppins';
   font-weight: 700;
@@ -372,7 +368,8 @@ header #buttonSearchName:hover{
   display: flex;
   flex-direction: column;
   gap: 43px;
-  height: 405px;
+  height: 50vh;
+  max-height: 405px;
   padding: 17px 10px;
   background-color: white;
   overflow-y: auto;
