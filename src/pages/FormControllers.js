@@ -8,13 +8,13 @@ class FormControllers {
 
     switch (buttonName) {
       case 'Novo produto':
-       FormControllers.createNewProduct(product)
+       await FormControllers.createNewProduct(product)
         break
       case 'Atualizar produto':
-       FormControllers.updateProduct(product)
+       await FormControllers.updateProduct(product)
         break
       case 'Excluir produto':
-       FormControllers.deleteProduct(product)
+       await FormControllers.deleteProduct(product)
         break
       default:
     }
