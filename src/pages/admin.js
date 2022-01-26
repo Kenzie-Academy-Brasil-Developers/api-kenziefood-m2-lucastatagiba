@@ -1,4 +1,5 @@
 import { Fetch } from "../script/models/Fetch.js";
+import FormControllers from "./FormControllers.js";
 
 const formProduct = document.querySelector('form')
 const productSelect = document.querySelector('#productsAvailable')
@@ -9,11 +10,20 @@ const descriptionProduct = document.querySelector('#productDescription')
 const URLImageProduct = document.querySelector('#productImageURL')
 const priceProduct = document.querySelector('#productPrice')
 
-async function populateProducts() {
-  const data = await Fetch.get('/my/product')
-  productSelect.innerHTML = ''
+let savedProducts = []
 
-  data.forEach((product) => {
+async function getDataFromAPI() {
+  const data = await Fetch.get('/my/product')
+  savedProducts = data
+}
+
+async function populateProducts() {
+
+  await getDataFromAPI()
+
+  productSelect.innerHTML = '<option>Selecione um produto para alterar</option>'
+
+  savedProducts.forEach((product) => {
     const option = document.createElement('option')
     option.value = product.id
     option.innerText = product.nome
@@ -22,88 +32,34 @@ async function populateProducts() {
   })
 }
 
-formProduct.addEventListener('submit', submitForm)
+function autoFillInputs() {
+  const productId = Number(productSelect.value)
 
-function submitForm(event) {
-  event.preventDefault()
-  const buttonName = event.submitter.innerText
+  const product = savedProducts.find(({ id }) => id === productId)
 
-  switch (buttonName) {
-    case 'Novo produto':
-      createNewProduct()
-      break
-    case 'Atualizar produto':
-      updateProduct()
-      break
-    case 'Excluir produto':
-      deleteProduct()
-      break
-    default:
-  }
+  nameProduct.value = product.nome
+  categoryProduct.value = product.categoria
+  descriptionProduct.value = product.descricao
+  URLImageProduct.value = product.imagem
+  priceProduct.value = Number(product.preco)
 }
 
-async function createNewProduct() {
+productSelect.addEventListener('change', autoFillInputs)
 
-  const newProduct = {
-<<<<<<< HEAD
-    nome: 'nameProduct',
-    preco: 123,
-    categoria: 'categoryProduct',
-    imagem: 'https://storage.googleapis.com/cpt-partners-content-prod/fc761428-4d17-4edf-bcd7-f9632d2695d6.png',
-    descricao: 'descriptionProduct'
-  }
+formProduct.addEventListener('submit', async (event) => {
 
-  const data = await Fetch.post('/my/product', newProduct)
-
-=======
+  const product = {
+    id: productSelect.value,
     nome: nameProduct.value,
-    preco: Number(priceProduct.value),
     categoria: categoryProduct.value,
+    descricao: descriptionProduct.value,
     imagem: URLImageProduct.value,
-    descricao: descriptionProduct.value
+    preco: Number(priceProduct.value)
   }
 
-  const { error, ...product } = await Fetch.post('/my/product', newProduct)
-  
-  if(error){
-    alert(error)
-  } else {
-    alert(`Produto ${product.nome.toUpperCase()} foi criado com sucesso`)
-  }
->>>>>>> 6cb0a26379109112b431edbce7c5b349aa19b186
-}
+ await FormControllers.submitForm(event, product)
+ populateProducts()
+})
 
-async function updateProduct() {
-  console.log(document.querySelector('#products'))
-
-  const toUpdate = {
-    nome: nameProduct,
-    preco: priceProduct,
-    categoria: categoryProduct,
-    imagem: URLImageProduct,
-    descricao: descriptionProduct
-  }
-
-  Fetch.patch(`/my/product/${id}`, toUpdate)
-}
-
-
-async function deleteProduct() {
-  const idProduct = productSelect.value
-  if (idProduct) {
-    const deletedProduct = await Fetch.delete(`/my/product/${idProduct}`)
-    if (deletedProduct === 204) {
-      alert('O produto selecionado foi excluido com sucesso !')
-      populateProducts()
-    } else {
-      alert('Verifique os campos e tente novamente !')
-    }
-  }else{
-    alert('Selecione um produto a ser deletado.')
-  }
-
-}
 
 populateProducts()
-// createNewProduct()
-
