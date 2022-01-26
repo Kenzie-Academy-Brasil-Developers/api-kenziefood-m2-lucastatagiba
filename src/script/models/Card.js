@@ -47,7 +47,6 @@ class Card {
 
         const iconAddCart = document.createElement('img')
         iconAddCart.classList.add('iconAddCart')
-        iconAddCart.src = './src/images/icons/addToCart.svg'
         iconAddCart.addEventListener('click', this)
 
         divPriceIcon.append(price, iconAddCart)
