@@ -3,6 +3,12 @@ import { Fetch } from "./models/Fetch.js"
 import { Cart } from "./models/Cart.js";
 
 const panel__showCase = document.querySelector('#panel__showCase')
+
+const buttonShowModalLogin = document.querySelector('.buttonLogin')
+const buttonHiddenModalLogin = document.querySelector('#fecharModal')
+
+const buttonLogin = document.querySelector('#botaoEntrarModal')
+
 const cartProducts = document.querySelector('.cart__products')
 const buttonsFilter = document.querySelector('.panel__buttonsFilter')
 const input = document.querySelector('#inputSearchName')
@@ -22,34 +28,34 @@ const cartPositionAdjust = () => {
     }
 }
 
-const filterByName = (listProduct) => {
-    listProduct.filterByName(input.value)
-}
-
-const addEventFilterByName = (listProduct) => {
-    input.addEventListener('keyup', () => filterByName(listProduct))
+const addEventFilterByName = (mainProductsPanel) => {
+    input.addEventListener('keyup', () => mainProductsPanel.filterByName(input.value))
 }
 
 const removeAticveClass = () => {
     const classActive = document.querySelector('.panel__buttonCategory--active')
+
     if (classActive) {
         classActive.classList.remove('panel__buttonCategory--active')
     }
 }
 
-const filterByCategory = (event, listProduct) => {
+const filterByCategory = (event, mainProductsPanel) => {
     const element = event.target
     if (element.tagName === 'BUTTON') {
         const buttonContent = element.querySelector('span').innerText
         removeAticveClass()
+
         element.classList.add('panel__buttonCategory--active')
+
         const category = buttonContent === 'Todos' ? '' : buttonContent
-        listProduct.filterByCategory(category)
+
+        mainProductsPanel.filterByCategory(category)
     }
 }
 
-const addEventFilterByCategory = (listProduct) => {
-    buttonsFilter.addEventListener('click', (event) => filterByCategory(event, listProduct))
+const addEventFilterByCategory = (mainProductsPanel) => {
+    buttonsFilter.addEventListener('click', (event) => filterByCategory(event, mainProductsPanel))
 }
 
 const startPanel = async () => {
@@ -58,13 +64,13 @@ const startPanel = async () => {
     
     const allProducts = [...data1, ...data2]
 
-    const listProductCart = new Cart(cartProducts, totalAmount, totalPrice)
-    const listProduct = new Panel(panel__showCase, allProducts, listProductCart)
+    const mainCart = new Cart(cartProducts, totalAmount, totalPrice)
+    const mainProductsPanel = new Panel(panel__showCase, allProducts, mainCart)
 
-    listProduct.listProduct()
+    mainProductsPanel.listProduct()
 
-    addEventFilterByCategory(listProduct)
-    addEventFilterByName(listProduct)
+    addEventFilterByCategory(mainProductsPanel)
+    addEventFilterByName(mainProductsPanel)
 }
 
 const authenticateUser = () => {
@@ -77,11 +83,24 @@ const authenticateUser = () => {
     
     if(superUser.username === usernameInput && superUser.password === passwordInput){
         window.location.href = './src/pages/admin.html'
+    } else {
+        alert('Username ou senha incorretos')
     }
 }
 
-window.addEventListener('resize', cartPositionAdjust)
+const toggleLoginModal = () => {
+    const modal = document.querySelector('.modalLogin')
 
+    modal.classList.toggle('modalLogin--hidden')
+}
+
+buttonShowModalLogin.addEventListener('click', toggleLoginModal)
+
+buttonHiddenModalLogin.addEventListener('click', toggleLoginModal)
+
+buttonLogin.addEventListener('click', authenticateUser)
+
+window.addEventListener('resize', cartPositionAdjust)
 cartPositionAdjust()
 
 startPanel()
