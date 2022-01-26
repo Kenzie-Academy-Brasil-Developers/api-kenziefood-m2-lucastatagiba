@@ -46,7 +46,7 @@ function autoFillInputs() {
 
 productSelect.addEventListener('change', autoFillInputs)
 
-formProduct.addEventListener('submit', (event) => {
+formProduct.addEventListener('submit', async (event) => {
 
   const product = {
     id: productSelect.value,
@@ -57,7 +57,8 @@ formProduct.addEventListener('submit', (event) => {
     preco: Number(priceProduct.value)
   }
 
-  FormControllers.submitForm(event, product)
+ await FormControllers.submitForm(event, product)
+ populateProducts()
 })
 
 

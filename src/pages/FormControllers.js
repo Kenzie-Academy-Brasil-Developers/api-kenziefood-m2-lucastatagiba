@@ -2,19 +2,19 @@ import { Fetch } from "../script/models/Fetch.js";
 
 class FormControllers {
 
-  static submitForm(event, product) {
+  static async submitForm(event, product) {
     event.preventDefault()
     const buttonName = event.submitter.innerText
 
     switch (buttonName) {
       case 'Novo produto':
-        createNewProduct(product)
+       FormControllers.createNewProduct(product)
         break
       case 'Atualizar produto':
-        updateProduct(product)
+       FormControllers.updateProduct(product)
         break
       case 'Excluir produto':
-        deleteProduct(product)
+       FormControllers.deleteProduct(product)
         break
       default:
     }
@@ -58,8 +58,7 @@ class FormControllers {
   
       if (deletedProduct === 204) {
         alert('O produto selecionado foi excluido com sucesso !')
-        populateProducts()
-  
+
       } else {
         alert('Verifique os campos e tente novamente !')
       }
