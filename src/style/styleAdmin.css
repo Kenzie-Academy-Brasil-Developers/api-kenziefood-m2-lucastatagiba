@@ -78,7 +78,6 @@ button {
     width: 250px;
     padding: 8px;
     color: #ffffff;
-    background-color: #FF2253;
     border: 1px dashed black;
     border-radius: 10px;
     font-weight: bold;
@@ -88,6 +87,14 @@ button {
 
 button:nth-of-type(1) {
     margin-top: 30px;
+}
+
+button:nth-of-type(1), button:nth-of-type(2){
+    background: rgb(7, 7, 185);
+}
+
+button:nth-of-type(3){
+    background-color: #FF0000;
 }
 
 button:hover {
