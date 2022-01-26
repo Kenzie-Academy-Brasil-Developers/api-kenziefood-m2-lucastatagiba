@@ -153,6 +153,10 @@ header #buttonSearchName img {
   box-sizing: border-box;
 }
 
+.articleCard:hover .productImg {
+  border-color: var(--color-primary);
+}
+
 .articleCard .category {
   display: flex;
   justify-content: center;
@@ -390,8 +394,12 @@ header #buttonSearchName img {
 
 @media screen and (min-width: 530px) {
   header {
+    position:fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
     box-shadow: 0px 0px 40px -20px rgba(0, 0, 0, 0.25);
-    margin-bottom: 42px;
+    z-index: 10;
   }
 
   .header__container {
@@ -402,6 +410,10 @@ header #buttonSearchName img {
 
   header .header__inputArea {
     width: 311px;
+  }
+
+  main{
+    margin-top: 134px;
   }
 
   .panel__buttonsFilter {
@@ -438,9 +450,8 @@ header #buttonSearchName img {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical
   }
-
   .cart {
-    width: 320px;
+    width: 500px;
   }
 }
 
@@ -448,5 +459,17 @@ header #buttonSearchName img {
   .panel__container {
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  #panel__showCase {
+    width: calc(100% - 320px);
+    gap: 10px;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+
+  .cart {
+    position: fixed;
+    width: 320px;
   }
 }
