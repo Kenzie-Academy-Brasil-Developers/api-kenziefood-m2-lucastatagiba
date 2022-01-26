@@ -9,12 +9,6 @@ class Card {
         this.cart = cart
     }
 
-
-    // /**
-    // * @param {string} url
-    // */
-
-    // cria cada card
     createElement() {
         const articleCard = document.createElement('article')
         articleCard.classList.add('articleCard')
@@ -54,7 +48,7 @@ class Card {
         return articleCard
     }
 
-    // evento para chamar outros eventos
+
     handleEvent(event) {
         switch (event.type) {
             case 'click':
