@@ -94,6 +94,7 @@ body {
 }
 
 #botaoEntrarModal {
+  margin-top: 20px;
   width: 80px;
   border: none;
   padding: 8px;
