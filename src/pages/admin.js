@@ -9,11 +9,20 @@ const descriptionProduct = document.querySelector('#productDescription')
 const URLImageProduct = document.querySelector('#productImageURL')
 const priceProduct = document.querySelector('#productPrice')
 
-async function populateProducts() {
-  const data = await Fetch.get('/my/product')
-  productSelect.innerHTML = ''
+let savedProducts = []
 
-  data.forEach((product) => {
+async function getDataFromAPI() {
+  const data = await Fetch.get('/my/product')
+  savedProducts = data
+}
+
+async function populateProducts() {
+
+  await getDataFromAPI()
+
+  productSelect.innerHTML = '<option>Selecione um produto para alterar</option>'
+
+  savedProducts.forEach((product) => {
     const option = document.createElement('option')
     option.value = product.id
     option.innerText = product.nome
@@ -21,6 +30,22 @@ async function populateProducts() {
     productSelect.appendChild(option)
   })
 }
+
+
+function autoFillInputs() {
+  const productId = Number(productSelect.value)
+
+  const product = savedProducts.find(({ id }) => id === productId)
+
+  nameProduct.value = product.nome
+  categoryProduct.value = product.categoria
+  descriptionProduct.value = product.descricao
+  URLImageProduct.value = product.imagem
+  priceProduct.value = Number(product.preco)
+}
+
+
+productSelect.addEventListener('change', autoFillInputs)
 
 formProduct.addEventListener('submit', submitForm)
 
@@ -45,17 +70,6 @@ function submitForm(event) {
 async function createNewProduct() {
 
   const newProduct = {
-<<<<<<< HEAD
-    nome: 'nameProduct',
-    preco: 123,
-    categoria: 'categoryProduct',
-    imagem: 'https://storage.googleapis.com/cpt-partners-content-prod/fc761428-4d17-4edf-bcd7-f9632d2695d6.png',
-    descricao: 'descriptionProduct'
-  }
-
-  const data = await Fetch.post('/my/product', newProduct)
-
-=======
     nome: nameProduct.value,
     preco: Number(priceProduct.value),
     categoria: categoryProduct.value,
@@ -70,7 +84,6 @@ async function createNewProduct() {
   } else {
     alert(`Produto ${product.nome.toUpperCase()} foi criado com sucesso`)
   }
->>>>>>> 6cb0a26379109112b431edbce7c5b349aa19b186
 }
 
 async function updateProduct() {
