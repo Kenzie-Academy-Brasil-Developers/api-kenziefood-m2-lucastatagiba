@@ -1,4 +1,5 @@
 import { Fetch } from "../script/models/Fetch.js";
+import FormControllers from "./FormControllers.js";
 
 const formProduct = document.querySelector('form')
 const productSelect = document.querySelector('#productsAvailable')
@@ -31,7 +32,6 @@ async function populateProducts() {
   })
 }
 
-
 function autoFillInputs() {
   const productId = Number(productSelect.value)
 
@@ -44,79 +44,21 @@ function autoFillInputs() {
   priceProduct.value = Number(product.preco)
 }
 
-
 productSelect.addEventListener('change', autoFillInputs)
 
-formProduct.addEventListener('submit', submitForm)
+formProduct.addEventListener('submit', (event) => {
 
-function submitForm(event) {
-  event.preventDefault()
-  const buttonName = event.submitter.innerText
-
-  switch (buttonName) {
-    case 'Novo produto':
-      createNewProduct()
-      break
-    case 'Atualizar produto':
-      updateProduct()
-      break
-    case 'Excluir produto':
-      deleteProduct()
-      break
-    default:
-  }
-}
-
-async function createNewProduct() {
-
-  const newProduct = {
+  const product = {
+    id: productSelect.value,
     nome: nameProduct.value,
-    preco: Number(priceProduct.value),
     categoria: categoryProduct.value,
+    descricao: descriptionProduct.value,
     imagem: URLImageProduct.value,
-    descricao: descriptionProduct.value
+    preco: Number(priceProduct.value)
   }
 
-  const { error, ...product } = await Fetch.post('/my/product', newProduct)
-  
-  if(error){
-    alert(error)
-  } else {
-    alert(`Produto ${product.nome.toUpperCase()} foi criado com sucesso`)
-  }
-}
+  FormControllers.submitForm(event, product)
+})
 
-async function updateProduct() {
-  console.log(document.querySelector('#products'))
-
-  const toUpdate = {
-    nome: nameProduct,
-    preco: priceProduct,
-    categoria: categoryProduct,
-    imagem: URLImageProduct,
-    descricao: descriptionProduct
-  }
-
-  Fetch.patch(`/my/product/${id}`, toUpdate)
-}
-
-
-async function deleteProduct() {
-  const idProduct = productSelect.value
-  if (idProduct) {
-    const deletedProduct = await Fetch.delete(`/my/product/${idProduct}`)
-    if (deletedProduct === 204) {
-      alert('O produto selecionado foi excluido com sucesso !')
-      populateProducts()
-    } else {
-      alert('Verifique os campos e tente novamente !')
-    }
-  }else{
-    alert('Selecione um produto a ser deletado.')
-  }
-
-}
 
 populateProducts()
-// createNewProduct()
-

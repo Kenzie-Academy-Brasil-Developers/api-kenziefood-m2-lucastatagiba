@@ -1,3 +1,5 @@
+import { Fetch } from "../script/models/Fetch.js";
+
 class FormControllers {
 
   static submitForm(event, product) {
@@ -28,7 +30,6 @@ class FormControllers {
       alert(error)
     } else {
       alert(`Produto ${created.nome.toUpperCase()} foi criado com sucesso !`)
-      populateProducts()
     }
   }
 
@@ -42,7 +43,6 @@ class FormControllers {
         alert(msg)
       } else {
         alert(`Produto ${updated.nome.toUpperCase()} foi atualizado com sucesso !`)
-        populateProducts()
       }
 
     } else {
