@@ -28,16 +28,12 @@
                 <h3> Faça seu login para ter acesso </h3>
             </div>
             <div id='conteudoLogin'>
+                
                 <div class='campoLogin'>
                     <span> Login:</span>
                     <input id="modalLoginUsername" type="text" placeholder="Login">
                     <span> Senha:</span>
                     <input id="modalLoginPassword" type="password" placeholder="Senha">
-                </div>
-
-                <div id='campoImg'>
-                    <img src="./src/imagens/kisspng-padlock-green-brand-padlock-icon-5b5bce02db0848.7502634315327431708972.png  "
-                        alt="">
                 </div>
 
             </div>
@@ -66,7 +62,7 @@
 
             <section id="panel">
                 <div class="panel__buttonsFilter">
-                    <button class="panel__buttonCategory">
+                    <button class="panel__buttonCategory panel__buttonCategory--active">
                         <span>Todos</span>
                     </button>
 
@@ -124,7 +120,10 @@
 
         </div>
 
-        <img src="./src/images/icons/user.svg" alt="userAdmin">
+        <button class="buttonLogin">
+            <img src="./src/images/icons/user.svg" alt="userAdmin" >
+            Admin
+        </button>
 
     </main>
 

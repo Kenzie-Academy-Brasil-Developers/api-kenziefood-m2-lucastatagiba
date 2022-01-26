@@ -36,14 +36,16 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.modalLogin--hidden{
+
+.modalLogin--hidden {
   display: none;
 }
 
-#imgModal{
+#imgModal {
   width: 100px;
 }
-.headerModalLogin{
+
+.headerModalLogin {
   width: 250px;
   text-align: center;
   background: #FF2253;
@@ -55,11 +57,12 @@ body {
   justify-content: space-between;
 }
 
-#cabecalhoLogin{
+#cabecalhoLogin {
   font-size: 12px;
   width: 200px;
 }
-#conteudoModal{
+
+#conteudoModal {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,30 +73,40 @@ body {
   background: #FF2253;
   font-weight: bold;
 }
-#conteudoLogin{
+
+#conteudoLogin {
   display: flex;
   flex-direction: column;
   margin: 30px 0 10px 0;
 }
-.campoLogin{
+
+.campoLogin {
   display: flex;
   flex-direction: column;
 }
-.campoLogin span, input{
+
+.campoLogin span, input {
   font-size: 12px;
   width: 200px;
   margin-top: 5px;
   border: none;
   outline: none;
 }
-#botaoEntrarModal{
+
+#botaoEntrarModal {
+  margin-top: 20px;
   width: 80px;
   border: none;
   padding: 8px;
   color: #FF2253;
   font-weight: bold;
 }
-#botaoEntrarModal:hover{
+
+#botaoEntrarModal:hover {
+  cursor: pointer;
+}
+
+#fecharModal {
   cursor: pointer;
 }
 
@@ -152,17 +165,21 @@ header #buttonSearchName img {
   vertical-align: -2px;
 }
 
-header #buttonSearchName:hover img{
+header #buttonSearchName:hover img {
   filter: brightness(0) invert(1);
 }
 
-header #buttonSearchName:hover{
+header #buttonSearchName:hover {
   background-color: var(--color-primary);
 }
 
 .panel__container {
   display: flex;
   flex-direction: column;
+}
+
+#panel {
+  width: 100%;
 }
 
 .panel__buttonsFilter {
@@ -238,6 +255,7 @@ header #buttonSearchName:hover{
   border-radius: 8px;
   border: 3px solid var(--color-primary-50);
   box-sizing: border-box;
+  object-fit: cover;
 }
 
 .articleCard:hover .productImg {
@@ -264,7 +282,8 @@ header #buttonSearchName:hover{
   padding: 6px 18px;
   width: fit-content;
 }
-.category::before{
+
+.category::before {
   background-image: url('../images/icons/sacolaCompra.png');
   background-size: 16px 16px;
   display: inline-block;
@@ -273,12 +292,15 @@ header #buttonSearchName:hover{
   height: 16px;
   content: "";
 }
+
 .Frutas::before {
   background-image: url('../images/icons/Frutas.svg');
 }
+
 .Panificadora::before {
   background-image: url('../images/icons/Panificadora.svg');
 }
+
 .Bebidas::before {
   background-image: url('../images/icons/Bebidas.svg');
 }
@@ -334,7 +356,7 @@ header #buttonSearchName:hover{
   background-color: var(--color-secondary);
 }
 
-.iconAddCart:hover::after{
+.iconAddCart:hover::after {
   width: 35px;
   height: 35px;
   width: 35px;
@@ -490,6 +512,25 @@ header #buttonSearchName:hover{
   max-width: 204px;
 }
 
+.buttonLogin {
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  margin: 10px auto;
+}
+
+.buttonLogin img {
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+}
 
 
 @media screen and (min-width: 530px) {
@@ -573,5 +614,12 @@ header #buttonSearchName:hover{
   .cart {
     position: fixed;
     width: 320px;
+  }
+
+  .buttonLogin {
+    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
   }
 }

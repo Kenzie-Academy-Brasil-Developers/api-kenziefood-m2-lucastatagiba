@@ -23,7 +23,6 @@ class Panel {
         } else{
             this.listProduct()
         }
-        
     }
 
     filterByName(inputValue) {
