@@ -1,0 +1,22 @@
+1 - função de fetch 
+
+2 - Listar produtos da API usando DOM, incluindo todas as sua informações(nome, foto, descrição, imagem, categoria com ícone e preço)
+a) - criar uma classe modeladora utilizando o dom para modelar cada card
+b) - criar uma classe para o template do painel
+c) - criar metodos de filtro dentro da classe template, metodo 1 - filtrar por input(nome do prod) / metodo 2 - filtrar por botão(categoria)
+
+
+3 - É possível fazer a adição dos produtos no carrinho, sem serem removidos da listagem de produtos. (Carrinho - Adicionar Produto)
+a) - criar uma classe para modelar o template do carrinho e utilizar da classe modeladora de card
+b) - desenvolver funçoes de remover e adicionar produtos no carrinho
+c) - desenvolver uma funçao para atualizar o preço total e uma funçao para atualizar a quantidade total de item
+d) - persistencia de dados do carrinho utilizando localStorage
+
+4- Uso de branches com nomes adequados (de acordo com funcionalidade desenvolvida)
+a) - uma branch para cada classe e suas funcionalidades
+b) - (classe modeladora) / (classe template painel principal) / (classe template carrinho)
+
+5- Painel Admin com implementaçao dos metodos POST / DELETE / PATCH
+a) - função fetch para cada metodo
+b) - criar um datalist para verificar os produtos contidos
+c) - delegar aos inputs cada fetch com seus respectivos valores a alterar

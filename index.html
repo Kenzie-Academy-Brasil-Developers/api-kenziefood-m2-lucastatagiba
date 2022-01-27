@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="O jeito mais fácil de pedir delivery de comida e fazer mercado. Leia avaliações de restaurantes, faça seu pedido pela internet e receba em casa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./src/style/reset.css">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <link rel="shortcut icon" href="./src/images/icons/sacolaCompra.png" type="image/png">
+    <title> Kenzie Food </title>
+</head>
+
+<body>
+    <div class='modalLogin modalLogin--hidden'>
+        <img id="imgModal" src="./src/images/logoModificado.svg" alt="logoKenzieFood">
+        <div class='headerModalLogin'>
+            <span id='spanApresentacao'> Painel Admin</span>
+            <span id='fecharModal'> x </span>
+        </div>        
+        <div id='conteudoModal'>
+            <div id='cabecalhoLogin'>
+                <h3> Faça seu login para ter acesso </h3>
+            </div>
+            <div id='conteudoLogin'>
+                
+                <div class='campoLogin'>
+                    <span> Login:</span>
+                    <input id="modalLoginUsername" type="text" placeholder="Login">
+                    <span> Senha:</span>
+                    <input id="modalLoginPassword" type="password" placeholder="Senha">
+                </div>
+
+            </div>
+            <button id='botaoEntrarModal'> Entrar </button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header__container container">
+            <figure class="header__logoFigure">
+                <img src="./src/images/logo.svg" alt="logo">
+                <figcaption>Kenzie Food</figcaption>
+            </figure>
+            <div class="header__inputArea">
+                <input id="inputSearchName" type="text" placeholder="Pesquisar por produto">
+                <button id="buttonSearchName">
+                    <img src="./src/images/icons/search.svg" alt="search icon">
+                </button>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="panel__container container">
+
+            <section id="panel">
+                <div class="panel__buttonsFilter">
+                    <button class="panel__buttonCategory panel__buttonCategory--active">
+                        <span>Todos</span>
+                    </button>
+
+                    <button class="panel__buttonCategory panel__buttonCategory--pao">
+                        <img src="./src/images/icons/Panificadora.svg" alt="icon">
+                        <span>Panificadora</span>
+                    </button>
+
+                    <button class="panel__buttonCategory panel__buttonCategory--fruta">
+                        <img src="./src/images/icons/Frutas.svg" alt="icon">
+                        <span>Frutas</span>
+                    </button>
+
+                    <button class="panel__buttonCategory panel__buttonCategory--bebida">
+                        <img src="./src/images/icons/Bebidas.svg" alt="icon">
+                        <span>Bebidas</span>
+                    </button>
+                </div>
+
+                <div id="panel__showCase">
+
+                </div>
+            </section>
+
+            <aside>
+                <section class="cart">
+                    <div class="cart__header">
+                        <img src="./src/images/icons/cart.svg" alt="cart icon">
+                        <h2>Carrinho</h2>
+                    </div>
+
+                    <div class="cart__productsArea--empty">
+                        <div class="cart__products">
+                        </div>
+                        <div class="cart__info">
+                            <div class="cart__totalAmount">
+                                <span class="totalAmount__title">Quantidade</span>
+                                <span class="totalAmount__value">0</span>
+                            </div>
+                            <div class="cart__totalPrice">
+                                <span class="totalPrice__title">Total</span>
+                                <span class="totalPrice__value">0</span>
+                            </div>
+                        </div>
+                        <div class="emptyCart">
+                            <div class="emptyCart__content">
+                                <img src="./src/images/icons/emptyCart.svg" alt="box" class="emptyCart__image">
+                                <h3 class="emptyCart__title">Ops!</h3>
+                                <p class="emptyCart__description">Por enquanto não temos produtos no carrinho</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+        </div>
+
+        <button class="buttonLogin">
+            <img src="./src/images/icons/user.svg" alt="userAdmin" >
+            Admin
+        </button>
+
+    </main>
+
+    <script type="module" src="./src/script/main.js"></script>
+</body>
+
+</html>
